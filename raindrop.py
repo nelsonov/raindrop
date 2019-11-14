@@ -7,7 +7,7 @@ I2CADDR = 0x08
 REGISTER = 0x00
 bus = smbus.SMBus(1)
 name = "weather"
-sensortype  = "resitance"
+sensortype  = "resistance"
 sensor = "raindrop1"
 
 @app.route('/')
@@ -16,7 +16,7 @@ def rawval():
 
 @app.route('/inline/')
 def inlineval():
-    return (name + ",sensor=" + sensor + ",sensortype=" + sensortype + " value=" + getval())
+    return (sensortype + ",sensor=" + sensor + " value=" + getval())
 
 def getval():
     reading = bus.read_byte(I2CADDR)
