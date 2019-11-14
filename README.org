@@ -1,0 +1,6 @@
+* raindrop
+
+Read a value from an i2c device (in this case a raindrop resistence
+sensor on a Raspberry Pi) and make the value available via http
+requests using Flask and WSGI. The /inline/ path returns the data
+formatted for consumption by Telegraf/InfluxDB
