@@ -1,6 +1,16 @@
 * raindrop
 
-Read a value from an i2c device (in this case a raindrop resistence
+Read a value from an i2c device (in this case a raindrop resistance
 sensor on a Raspberry Pi) and make the value available via http
-requests using Flask and WSGI. The /inline/ path returns the data
-formatted for consumption by Telegraf/InfluxDB
+requests using Flask and WSGI. The `/inline/` path returns the data
+formatted for consumption by Telegraf/InfluxDB.
+
+Make sure that the user that the web server runs as has permission to
+access i2c. On my Raspberry Pi, this was done by:
+
+#+BEGIN_SRC
+sudo usermod -a -G i2c www-data
+#+END_SRC
+
+apache2 runs as user *www-data* and members of group *i2c* can access
+the i2c interface.
